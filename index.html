@@ -1,103 +1,112 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>first page</title>
-  <style type="text/css">
-    ul,ol{list-style: none;}
-    .div{
-      display: inline-block;padding: 10px;
-      margin-right:5px;background-color: pink" 
-   }
-  </style>
+    <title>first page</title>
+    <style type="text/css">
+        ul,
+        ol {
+            list-style: none;
+        }
+        
+        .div {
+            display: inline-block;
+            padding: 10px;
+            margin-right: 5px;
+            background-color: pink" 
+
+        }
+    </style>
 </head>
+
 <body>
-<div id="app">
-	{{ message }}
-</div>
-<div id="app-2">
-  <span v-bind:title="message">
+    <div id="app">
+        {{ message }}
+    </div>
+    <div id="app-2">
+        <span v-bind:title="message">
     鼠标悬停几秒钟查看此处动态绑定的提示信息！
   </span>
-</div>
-<div id="app-3">
-  <p v-if="seen">现在你看到我了</p>
-  <div><input type="text" v-model="newItem" name="" v-on:keyup.enter="addNew"></div>
-  <ul>
-    <li v-for="item in items"><input type="checkbox" name="">{{item.desc}}</li>
-  </ul>
-  <p>**********************************************</p>
-  <ul>
-    <li v-text="a"></li>
-    <li > <p v-html="b" :title="title.item"></p></li>
-    <li>
-      <div v-if="type === 'A'">A</div>
-      <div v-else-if="type === 'B'"> B</div>
-      <div v-else-if="type === 'C'">C</div>
-      <div v-else>Not A/B/C </div>
-    </li>
-    <li>
-      <div class="div"v-for="(item, index) in title.data" v-on:click="fetchItem(item)"> {{ item }}</div>
-      <div v-for="(val, key,index) in title.list"> {{ val.title}}<p>{{val.value}}</p></div>
-    </li>
-  </ul>
-</div>
-<script type="text/javascript" src="js/vue.js"></script>
-<script type="text/javascript">
-	var app = new Vue({
-  el: '#app',
-  data: {
-    message: 'Hello Vue!'
-  }
-});
-	var app2 = new Vue({
-  el: '#app-2',
-  data: {
-    message: '页面加载于 ' + new Date()
-  }
-});
-	var app3 = new Vue({
-  el: '#app-3',
-  data: {
-    items:[
-      {
-       desc:"hello world",
-       g:"123"
-      }
-    ],
-    newItem:"",
-    seen: true,
-    a:"Roman test",
-    b:"<strong>Roamn 123</strong>",
-    type:"",
-    title:{
-      item:"first blood",
-      data:[1,2,3,4],
-      list:[
-        {
-          title:"rate:",
-          value:"2.5%"
-         },
-        {
-          title:"charges:",
-          value:"56300.00"
-        }
-      ]
-    }
-  },
-  methods:{
-    fetchItem:function(item){
-      console.info(item);
-    },
-    addNew:function(){
-      console.log(this.newItem);
-      this.items.push({
-        desc:this.newItem,
-        mini:""
-      })
-      this.newItem='';
-    }
-  }
-});
-</script>
+    </div>
+    <div id="app-3">
+        <p v-if="seen">现在你看到我了</p>
+        <div><input type="text" v-model="newItem" name="" v-on:keyup.enter="addNew"></div>
+        <ul>
+            <li v-for="item in items"><input type="checkbox" name="">{{item.desc}}</li>
+        </ul>
+        <p>**********************************************</p>
+        <ul>
+            <li v-text="a"></li>
+            <li>
+                <p v-html="b" :title="title.item"></p>
+            </li>
+            <li>
+                <div v-if="type === 'A'">A</div>
+                <div v-else-if="type === 'B'"> B</div>
+                <div v-else-if="type === 'C'">C</div>
+                <div v-else>Not A/B/C </div>
+            </li>
+            <li>
+                <div class="div" v-for="(item, index) in title.data" v-on:click="fetchItem(item)"> {{ item }}</div>
+                <div v-for="(val, key,index) in title.list"> {{ val.title}}
+                    <p>{{val.value}}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!'
+            }
+        });
+        var app2 = new Vue({
+            el: '#app-2',
+            data: {
+                message: '页面加载于 ' + new Date()
+            }
+        });
+        var app3 = new Vue({
+            el: '#app-3',
+            data: {
+                items: [{
+                    desc: "hello world",
+                    g: "123"
+                }],
+                newItem: "",
+                seen: true,
+                a: "Roman test",
+                b: "<strong>Roman 123</strong>",
+                type: "",
+                title: {
+                    item: "first blood",
+                    data: [1, 2, 3, 4],
+                    list: [{
+                        title: "rate:",
+                        value: "2.5%"
+                    }, {
+                        title: "charges:",
+                        value: "56300.00"
+                    }]
+                }
+            },
+            methods: {
+                fetchItem: function(item) {
+                    console.info(item);
+                },
+                addNew: function() {
+                    console.log(this.newItem);
+                    this.items.push({
+                        desc: this.newItem,
+                        mini: ""
+                    })
+                    this.newItem = '';
+                }
+            }
+        });
+    </script>
 </body>
+
 </html>
